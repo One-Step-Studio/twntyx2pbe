@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-7ircl)y+r1nlc7b$l-)m9c1zgrila50_-k+c9j3duyvqtm6xs#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
-CORS_ALLOW_ORIGINS = ['http://localhost']
+ALLOWED_HOSTS = ['192.168.2.2']
+CORS_ALLOW_ORIGINS = ['192.168.2.2']
 
 
 # Application definition
@@ -54,9 +54,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'story_writing.urls'
+ROOT_URLCONF = 'twntyx2p.urls'
 
-WSGI_APPLICATION = 'story_writing.wsgi.application'
+WSGI_APPLICATION = 'twntyx2p.wsgi.application'
 
 
 # Database
