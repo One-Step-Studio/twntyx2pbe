@@ -1,8 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
-)
+from django.contrib.auth.models import AbstractBaseUser
 
+from user_manager import UserManager
 
 class User(AbstractBaseUser):
     email = models.EmailField(
@@ -12,13 +11,15 @@ class User(AbstractBaseUser):
     )
     is_active = models.BooleanField(default=True)
     realm_name = models.CharField(unique=True, null=False, max_length=16)
-    staff = models.BooleanField(default=False) # a admin user; non super-user
-    admin = models.BooleanField(default=False) # a superuser
+    staff = models.BooleanField(default=False)  # a admin user; non super-user
+    admin = models.BooleanField(default=False)  # a superuser
+
+    objects = UserManager()
 
     # notice the absence of a "Password field", that is built in.
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = [] # Email & Password are required by default.
+    REQUIRED_FIELDS = []  # Email & Password are required by default.
 
     def get_email(self):
         # The user is identified by their email address

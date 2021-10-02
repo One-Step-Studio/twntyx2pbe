@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['192.168.2.2']
 CORS_ALLOW_ORIGINS = ['192.168.2.2']
 
-
+AUTH_USER_MODEL = 'twntyx2p.accounts.User'
 # Application definition
 
 INSTALLED_APPS = [
