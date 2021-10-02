@@ -7,7 +7,7 @@ from rx.subject import BehaviorSubject
 
 
 class Clockwork:
-    MAX_SESSION_TIME: Final = 10
+    MAX_SESSION_TIME: Final = 900
     DEFAULT_INTERVAL: Final = 1.0
 
     def __init__(self):

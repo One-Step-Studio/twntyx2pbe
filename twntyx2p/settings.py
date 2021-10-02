@@ -64,7 +64,7 @@ WSGI_APPLICATION = 'twntyx2p.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'realm',
+        'NAME': 'realms',
         'USER': 'devil',
         'PASSWORD': 'jj7w2dqz73am563y',
         'HOST': '192.168.2.105',
