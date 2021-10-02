@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     #My apps
+    'twntyx2p.accounts.apps.AccountsConfig',
     'twntyx2p.maingame.apps.MaingameConfig'
 ]
 
