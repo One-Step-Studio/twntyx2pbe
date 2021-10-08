@@ -5,7 +5,7 @@ from . import views
 
 router = routers.SimpleRouter()
 
-router.register(r'entries', views.GameInstanceManage)
+router.register(r'instance', views.GameInstanceManage)
 
 urlpatterns = [
     path('', include(router.urls)),

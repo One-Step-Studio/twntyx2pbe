@@ -1,11 +1,12 @@
 from django.db import models
-
-
 # Create your models here.
-class GameInstance(models.Model):
-    id = models.AutoField(primary_key=True)
+from twntyx2p.accounts.models import User
+
+
+class UserGame(models.Model):
+    user_id = models.ForeignKey(User,primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
-    total_time_run = models.DateTimeField()
+    total_time_run = models.FloatField(default=0.0)
 
     class Meta:
         ordering = ['created']
