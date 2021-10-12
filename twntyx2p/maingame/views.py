@@ -18,26 +18,29 @@ from ..accounts.models import User
 
 class GameInstanceManage(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    user = User.id
-    queryset = UserGame.objects.get(user_id=user)
+    queryset = UserGame.objects
     serializer_class = GameInstanceSerializer
 
     def list(self, request):
+        my_id = request.user.id
+        print(my_id + " requested info")
         try:
             req = requests.get(
-                env.PROTOCOL + env.LOCAL_SERVER + env.GAME_API + self.user + env.CHECK_API + env.DEFAULT_ROUTE)
+                env.PROTOCOL + env.LOCAL_SERVER + env.GAME_API + my_id + env.CHECK_API + env.DEFAULT_ROUTE)
+            print("info is " + str(req.json()))
             res = Response(req, status=status.HTTP_200_OK)
         except:
             res = Response(status=status.HTTP_204_NO_CONTENT)
         return res
 
     def retrieve(self, request, *args, **kwargs):
+        my_id = request.user.id
         res = Response(status=status.HTTP_204_NO_CONTENT)
         parsed_req = JSONParser().parse(request)
         if parsed_req["info_type"] == "check_clock":
             try:
                 req = requests.get(
-                    env.PROTOCOL + env.LOCAL_SERVER + env.GAME_API + self.user + env.CHECK_API + env.DEFAULT_ROUTE)
+                    env.PROTOCOL + env.LOCAL_SERVER + env.GAME_API + my_id + env.CHECK_API + env.DEFAULT_ROUTE)
                 res = Response(req, status=status.HTTP_200_OK)
             except:
                 pass
@@ -46,13 +49,11 @@ class GameInstanceManage(viewsets.ModelViewSet):
 
 
     def create(self, request, *args, **kwargs):
-        data = self.user
-        if self.queryset:
-            req = requests.get(
-                env.PROTOCOL + env.LOCAL_SERVER + env.GAME_API + self.user)
-            return JsonResponse(req)
-        serializer = GameInstanceSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=status.HTTP_200_OK)
-        return JsonResponse(status=status.HTTP_400_BAD_REQUEST)
+        pass
+        # my_id = request.user.id
+        # req = requests.get(env.PROTOCOL + env.LOCAL_SERVER + env.GAME_API + my_id)
+        # serializer = GameInstanceSerializer(data=my_id)
+        # if serializer.is_valid():
+        #     serializer.save()
+        #     return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+        # return JsonResponse(status=status.HTTP_400_BAD_REQUEST)
