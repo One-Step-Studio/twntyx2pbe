@@ -32,12 +32,11 @@ class UserManage(viewsets.ModelViewSet):
             return False
 
     def create(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        if(serializer.is_valid()):
-            phone = serializer.data.get("phone")
+        try:
+            phone = request.data.get("phone")
             print(phone)
-            email = serializer.data.get("email")
-            password = serializer.data.get("password")
+            email = request.data.get("email")
+            password = request.data.get("password")
             new_user = User(phone=phone,email=email,password=password,realm_name="Hell")
             print(new_user.phone)
             new_user.save_sms_code(random.randint(10000, 99999))
@@ -45,7 +44,7 @@ class UserManage(viewsets.ModelViewSet):
             print(new_user.phone_code)
             sms_status = self.send_sms_to(phone=phone)
             return JsonResponse({"code":sms_status}, status=http.HTTPStatus.CREATED)
-        else:
+        except:
             return JsonResponse({"code":"error5"}, status=http.HTTPStatus.BAD_REQUEST)
 
 class UserActions(viewsets.ModelViewSet):
