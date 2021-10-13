@@ -1,6 +1,6 @@
 import http
 
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from rest_framework import viewsets
 from twntyx2p.accounts.models import User
 from twntyx2p.accounts.serializers import UserSerializer
