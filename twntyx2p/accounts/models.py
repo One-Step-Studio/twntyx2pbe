@@ -10,8 +10,8 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    phone = models.CharField(unique=True)
-    phone_code = models.IntegerField()
+    phone = models.CharField(max_length=12, unique=True)
+    phone_code = models.IntegerField(max_length=5)
     is_active = models.BooleanField(default=False)
     realm_name = models.CharField(unique=True, null=False, max_length=16)
     staff = models.BooleanField(default=False)  # a admin user; non super-user
