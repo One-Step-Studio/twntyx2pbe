@@ -14,7 +14,7 @@ class UserManage(viewsets.ModelViewSet):
         try:
             email = request.data.get("email")
             password = request.data.get("password")
-            new_user = User.objects.create_user(email, password)
+            new_user = User(email, password)
             new_user.save()
             return JsonResponse({"code": "success1"}, status=http.HTTPStatus.CREATED)
         except:

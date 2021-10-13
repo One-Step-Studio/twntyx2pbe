@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
-from twntyx2p.accounts.user_manager import UserManager
 
 
 class User(AbstractBaseUser):
@@ -16,8 +15,6 @@ class User(AbstractBaseUser):
     admin = models.BooleanField(default=False)  # a superuser
 
     created_at = models.DateTimeField(auto_now=True)
-
-    objects = UserManager()
 
     # notice the absence of a "Password field", that is built in.
 
