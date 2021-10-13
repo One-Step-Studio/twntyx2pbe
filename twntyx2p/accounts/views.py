@@ -1,11 +1,7 @@
 import http
 
 from django.http import HttpResponse, JsonResponse
-
-
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
-
 from twntyx2p.accounts.models import User
 from twntyx2p.accounts.serializers import UserSerializer
 
@@ -16,10 +12,9 @@ class UserManage(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         try:
-            phone = request.data.get("phone")
             email = request.data.get("email")
             password = request.data.get("password")
-            new_user = User(phone=phone, email=email ,password=password)
+            new_user = User(email=email, password=password)
             new_user.save()
             return JsonResponse({"code": "success1"}, status=http.HTTPStatus.CREATED)
         except:

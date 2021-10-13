@@ -1,3 +1,7 @@
 venv
 twntyx2p/maingame/migrations
+__pycache__
+**/__pycache__
 .idea
+/twntyx2p/accounts/migrations/
+/twntyx2p/maingame/migrations/
