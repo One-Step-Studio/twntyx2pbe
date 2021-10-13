@@ -1,5 +1,5 @@
 from django.contrib.auth.models import BaseUserManager
-
+from django.contrib.auth.hashers import make_password
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password, phone):
@@ -16,11 +16,8 @@ class UserManager(BaseUserManager):
             if phone:
                 user = self.model(phone=phone)
 
-        print(password)
 
-        user.set_password(password)
-
-        print(user.password)
+        user.set_password(make_password(password))
 
         user.save(using=self._db)
         return user
