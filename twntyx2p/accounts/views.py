@@ -1,4 +1,5 @@
 import http
+import traceback
 
 from django.http import JsonResponse
 from rest_framework import viewsets
@@ -15,5 +16,6 @@ class UserManage(viewsets.ModelViewSet):
             new_user = User(email, password)
             new_user.save()
             return JsonResponse({"code": "success1"}, status=http.HTTPStatus.CREATED)
-        except:
+        except Exception:
+            traceback.print_exc()
             return JsonResponse({"code": "error5"}, status=http.HTTPStatus.BAD_REQUEST)
