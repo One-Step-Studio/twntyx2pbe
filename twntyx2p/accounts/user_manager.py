@@ -16,9 +16,10 @@ class UserManager(BaseUserManager):
             if phone:
                 user = self.model(phone=phone)
 
+        print(password)
+
         user.set_password(password)
 
-        print(password)
         print(user.password)
 
         user.save(using=self._db)
