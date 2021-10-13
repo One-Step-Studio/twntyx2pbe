@@ -19,7 +19,7 @@ class UserManage(viewsets.ModelViewSet):
             phone = request.data.get("phone")
             email = request.data.get("email")
             password = request.data.get("password")
-            new_user = User(phone=phone,email=email,password=password,realm_name="Hell")
+            new_user = User(phone=phone, email=email ,password=password)
             new_user.save()
             return JsonResponse({"code": "success1"}, status=http.HTTPStatus.CREATED)
         except:
