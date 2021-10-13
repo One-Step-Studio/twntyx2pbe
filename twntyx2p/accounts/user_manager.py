@@ -6,6 +6,7 @@ class UserManager(BaseUserManager):
         """
         Creates and saves a User with the given email and password.
         """
+        print(email+":"+password)
         if not email:
             raise ValueError('Users must have an email address')
         else:
