@@ -10,10 +10,14 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    is_active = models.BooleanField(default=True)
+    phone = models.CharField(unique=True)
+    phone_code = models.IntegerField()
+    is_active = models.BooleanField(default=False)
     realm_name = models.CharField(unique=True, null=False, max_length=16)
     staff = models.BooleanField(default=False)  # a admin user; non super-user
     admin = models.BooleanField(default=False)  # a superuser
+
+    created_at = models.DateTimeField(auto_now=True)
 
     objects = UserManager()
 
@@ -32,6 +36,14 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+
+    def save_sms_code(self, code):
+        self.phone_code = code
+
+    def activate(self, user_code):
+        if user_code == self.phone_code:
+            self.is_active = True
+        return self.is_active
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
