@@ -31,8 +31,7 @@ CORS_ORIGIN_WHITELIST = (
   'http://localhost:4200',
 )
 
-AUTH_USER_MODEL = 'accounts.User'
-# Application definition
+AUTH_USER_MODEL = 'twntyx2p.accounts.User'
 
 INSTALLED_APPS = [
     'django.contrib.auth',
