@@ -10,7 +10,6 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    phone = models.CharField(max_length=12, unique=True, null=True)
     is_active = models.BooleanField(default=True)
     realm_name = models.CharField(unique=True, null=False, max_length=16, default="Hell")
     staff = models.BooleanField(default=False)  # a admin user; non super-user
@@ -23,7 +22,7 @@ class User(AbstractBaseUser):
     # notice the absence of a "Password field", that is built in.
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['phone',]  # Email & Password are required by default.
+    REQUIRED_FIELDS = []  # Email & Password are required by default.
 
     def get_email(self):
         # The user is identified by their email address

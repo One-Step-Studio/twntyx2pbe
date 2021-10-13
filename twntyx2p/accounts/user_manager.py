@@ -13,8 +13,6 @@ class UserManager(BaseUserManager):
                 user = self.model(
                     email=self.normalize_email(email),
                 )
-            if phone:
-                user = self.model(phone=phone)
 
         user.set_password(password)
 
