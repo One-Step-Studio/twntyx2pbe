@@ -2,9 +2,9 @@ from rest_framework import serializers
 from twntyx2p.accounts.models import User
 
 class UserSerializer(serializers.ModelSerializer):
-
+    email = serializers.EmailField()
     password = serializers.CharField(
-        min_length=6, required=True)
+        min_length=8, required=True)
 
     class Meta:
         model = User

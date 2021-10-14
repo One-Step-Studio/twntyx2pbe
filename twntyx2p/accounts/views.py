@@ -12,7 +12,9 @@ class UserManage(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         try:
-            serializer = UserSerializer(data=request.data)
+            email = request.data.get("email")
+            password = request.data.get("password")
+            serializer = UserSerializer(data={"email":email, "password": password})
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return JsonResponse({"code": "success1"}, status=http.HTTPStatus.CREATED)
