@@ -27,10 +27,6 @@ class User(AbstractBaseUser):
         # The user is identified by their email address
         return self.email
 
-    def get_realm_name(self):
-        # The user is identified by their email address
-        return self.realm_name
-
     def __str__(self):
         return self.email
 
