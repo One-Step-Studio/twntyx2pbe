@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
-from user_manager import  UserManager
+from twntyx2p.accounts.user_manager import UserManager
 
 
 class User(AbstractBaseUser):
