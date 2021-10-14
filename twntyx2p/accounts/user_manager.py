@@ -14,8 +14,10 @@ class UserManager(BaseUserManager):
         )
 
         user.set_password(raw_password=password)
+        print(password)
+        print(user.password)
         # user.set_password(raw_password=make_password(password=password))
-        # user.save(using=self._db)
+        user.save(using=self._db)
         return user
 
     def create_staffuser(self, email, password):
