@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id', 'email', 'password', 'is_staff',
-            'is_active', 'date_joined')
+            'is_active', 'created_at')
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
