@@ -4,7 +4,7 @@ from twntyx2p.accounts.models import User
 class UserSerializer(serializers.ModelSerializer):
 
     password = serializers.CharField(
-        min_length=6, write_only=True, required=True)
+        min_length=6, required=True)
 
     class Meta:
         model = User
