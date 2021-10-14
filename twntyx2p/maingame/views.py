@@ -12,8 +12,6 @@ from .serializers import GameInstanceSerializer
 
 import environments as env
 
-# Create your views here.
-from ..accounts.models import User
 
 
 class GameInstanceManage(viewsets.ModelViewSet):
